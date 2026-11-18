@@ -1,0 +1,12 @@
+--- /dev/fd/63	2026-11-18 14:26:01.329102928 +0000
++++ /dev/fd/62	2026-11-18 14:26:01.329102928 +0000
+@@ -90,7 +90,8 @@
+ .footer{margin:38px 0 0;color:#869fa3;font-size:11px;border-top:1px solid #2c414b;padding-top:18px;line-height:2}
+ .footer button{background:transparent;color:#7fdcb3;border:none;padding:4px 6px}
+ .footer a{color:#73cda6}
+-@media(max-width:980px){.shell{grid-template-columns:1fr}
++@media(max-width:980px){.shell{grid-template-columns:minmax(0,1fr)}
++.sidebar{min-width:0}
+ .sidebar{position:static;height:auto;padding:16px;gap:12px}
+ .sidebar nav{grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}
+ .nav{text-align:center;padding:10px 4px;font-size:11px}
