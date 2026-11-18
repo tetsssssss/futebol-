@@ -1,0 +1,54 @@
+--- treinador/renderer.js.orig	2026-11-18 14:29:44.585974085 +0000
++++ treinador/renderer.js	2026-11-18 14:29:44.610238176 +0000
+@@ -16,10 +16,10 @@
+   }
+   const players=view.players.flatMap((squad,side)=>squad.map(p=>({...p,side}))).filter(p=>!p.dismissed||p.cardShow).sort((a,b)=>a.y-b.y);
+   for(const p of players){const point=project(p.x,p.y);if(point.x< -30||point.x>width+30||point.y< -30||point.y>height+30)continue;drawPlayer(ctx,point,p,{color:p.role==='GK'?(p.side===0?'#f2ba56':'#b8a2ef'):colors[p.side],accent:p.role==='GK'?null:kits[p.side].c2,pattern:p.role==='GK'?'solid':kits[p.side].pattern,time:view.time,carrier:view.carrierId===p.id,selected:options.selected===p.id,names:options.names});hits.push({x:point.x,y:point.y,id:p.id,side:p.side})}
+-  const ground=project(view.ball.x,view.ball.y),ball=project(view.ball.x,view.ball.y,view.ball.z);
+ctx.fillStyle='#00181480';
+ctx.beginPath();
+ctx.ellipse(ground.x+1,ground.y+3,5+(view.ball.z||0),2.5,0,0,7);
+ctx.fill();
+ctx.fillStyle='#fff';
+ctx.strokeStyle='#0c1720';
+ctx.lineWidth=1.3;
+ctx.beginPath();
+ctx.arc(ball.x,ball.y,Math.max(3.3,Math.min(5.5,ball.scale*.4)),0,7);
+ctx.fill();
+ctx.stroke();
+ctx.fillStyle='#16252a';
+ctx.fillRect(ball.x-1,ball.y-1,2,2);
++  const ground=project(view.ball.x,view.ball.y),ball=project(view.ball.x,view.ball.y,view.ball.z);
+ctx.fillStyle='#00181480';
+ctx.beginPath();
+ctx.ellipse(ground.x+1,ground.y+3,5+(view.ball.z||0),2.5,0,0,7);
+ctx.fill();const br=Math.max(4.4,Math.min(7,ball.scale*.52));
+ctx.beginPath();
+ctx.arc(ball.x,ball.y,br+3.2,0,7);
+ctx.strokeStyle='#ffe66dcc';
+ctx.lineWidth=1.6;
+ctx.stroke();
+ctx.fillStyle='#fff';
+ctx.strokeStyle='#0c1720';
+ctx.lineWidth=1.5;
+ctx.beginPath();
+ctx.arc(ball.x,ball.y,br,0,7);
+ctx.fill();
+ctx.stroke();
+ctx.fillStyle='#16252a';
+ctx.fillRect(ball.x-1,ball.y-1,2,2);
+   ctx.fillStyle='#071b22d9';
+ctx.fillRect(10,10,Math.min(width-20,315),28);
+ctx.font='600 11px system-ui';
+ctx.textAlign='left';
+ctx.fillStyle='#d8fff0';
+ctx.fillText(`${replaying?'REPLAY · ':''}${view.action?ACTION_LABELS[view.action.subtype]||view.action.kind:'Organização e movimentação sem bola'}`,20,28);
+   ctx.font='600 10px system-ui';
+ctx.fillStyle='#d8fff0';
+ctx.textAlign='right';
+ctx.fillText(camera.mode==='broadcast'?'TRANSMISSÃO':camera.mode==='ball'?'ACOMPANHANDO A BOLA':'CÂMERA TÁTICA',width-12,height-9);
+  }
+  return {draw,resize,camera,options,hit(x,y){return hits.find(p=>Math.hypot(p.x-x,p.y-y)<18)},destroy(){observer.disconnect()}};
+ }
+-
++

@@ -15,3 +15,11 @@ Não testado ainda: o nav rola horizontalmente por toque (só medi o layout).
 
 ## Pendente
 Etapas 5–7, 9–10 e 11–50 não foram executadas. O GLB do atleta não estava entre os anexos desta sessão (só dois ZIPs e a fila); as etapas 41–48 dependem dele — reenvie. O `player.glb` interno do pacote é outro arquivo.
+
+## Atualização — etapa 13 (bola rastreável), parcial
+Correção 002 (`002-bola-visivel.patch`, `treinador/renderer.js`, original em `renderer.js.orig`): raio da bola 3,3–5,5 px → 4,4–7 px, com aro amarelo. Só desenho 2D; motor, resultados e saves intactos. 167 testes passam. Capturas: `evidencias/*_ball_after.png`.
+Não validado: movimentos rápidos em sequência (só um quadro por tamanho).
+
+## Achados novos (não corrigidos)
+- Etapa 18: em 390 px os nomes dos jogadores se sobrepõem a ponto de ficarem ilegíveis (existe o botão `view-names`; falta ocultar/encurtar por padrão em tela estreita).
+- Etapa 19: a bola na lateral/canto aparece cortada na borda do canvas (captura `m390_ball_after.png`).
