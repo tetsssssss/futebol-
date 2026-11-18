@@ -23,3 +23,6 @@ Legenda: ✔ feita e verificada · ◐ parcial (limitação dita) · ✘ não fe
 - Nada foi testado em celular físico, nem em WebGL real, nem com a CDN acessível.
 - Tamanho/legibilidade em desktop (nomes sobrepostos em aglomerados) ainda precisa de decisão de design.
 - Etapas 21–29, 7, 9, 10 e todo o bloco 3D permanecem pendentes.
+
+## Achado novo (APK)
+- `dist/treinador/index.html` está quebrado desde o ZIP original (reexport `export {…}` não tratado em `tools/build.mjs`). A APK usa o código-fonte. Ver `apk/LEIA-ME.md`.
